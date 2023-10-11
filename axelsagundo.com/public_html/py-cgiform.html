@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python CGI Form</title>
+    <style>
+        body{
+            width: 80%;
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center"> Use these forms to make requests</h1>
+    <h2>Make a GET request</h2>
+
+    <form action="https://issacnavarro.online/cgi-bin/py-get-echo.py" method="GET">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+         
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Make a POST request</h2>
+
+    <form action="/cgi-bin/py-post-echo.py" method="POST">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+         
+        <input type="submit" value="Submit">
+    </form>
+
+    <h3 style="font-size: 1.5rem">Make a GENERAL request </h3>
+
+    <form action="/cgi-bin/py-general-request-echo.py" method="POST">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+         
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <hr><h4 style="font-size: 1.5em;"> Session Test </h4> 
+
+    <p> CGI using Python</p>
+
+
+    <form action="/cgi-bin/py-sessions-1.py" method="Post" id="form" >
+        <label for="name">What is your name?</label>
+        <input type="text" id = "name" name="name" autocomplete="off">
+        <br>
+        <br>
+        <input type="submit" value="Test Sessioning">
+    </form>
+    
+    <a href="/" style="display:inline-block;margin:20px 0;">Home</a> <hr>    
+</body>
+</html>

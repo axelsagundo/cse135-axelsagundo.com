@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.zinggrid.com/dev/zinggrid-dev.min.js"></script>
+
+    <title>Dashboard!</title>
+</head>
+
+<body>
+    <div>hello this is the dashboard</div>
+    <div>User management</div>
+    <div>generate report</div>
+    <div>log out</div>
+
+    <zing-grid caption=“users” editor editor-controls >
+        <zg-data src="https://reporting.axelsagundo.com/dashboard/users" ></zg-data>
+
+        <zg-colgroup>
+            <zg-column index="username" filter="disabled"></zg-column>
+            <zg-column index="password" filter="disabled"></zg-column>
+            <zg-column index="admin" type="select" type-select-options="1,0"></zg-column>
+        </zg-colgroup>
+    </zing-grid>
+
+
+</body>
+</html>

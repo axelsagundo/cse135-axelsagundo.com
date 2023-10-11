@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>ZingGrid: Blank Grid</title>
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+  <script src="https://cdn.zinggrid.com/zinggrid.min.js" defer></script>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+ 
+    .chart--container {
+      height: 100%;
+      width: 100%;
+      min-height: 150px;
+    }
+ 
+    .zc-ref {
+      display: none;
+    }
+    zing-grid {
+      background: #eeeeee;
+    }
+    zg-head {
+      color: blue;
+    }
+    zg-cell:hover {
+      background-color: red;
+    }
+    zg-body{
+      background-color: light blue;
+    }
+  </style>
+
+
+  <script>
+
+    // let loadTimes = <%- JSON.stringify(loadTimes) %>;
+    // let sessionIDs = <%- JSON.stringify(sessionIDs) %>;
+    // let screenHs = <%- JSON.stringify(screenHs) %>;
+    // let screenWs = <%- JSON.stringify(screenWs) %>;
+    // let activity_data = <%- JSON.stringify(activity_data) %>;
+
+
+    let Load = <%- JSON.stringify(loadTimes) %>;
+    let myLabels = <%- JSON.stringify(sessionIDs) %>;
+    let SH = <%- JSON.stringify(screenHs) %>;
+    let SW = <%- JSON.stringify(screenWs) %>;
+    let dataValues =  <%- JSON.stringify(activity_data) %>;
+
+
+    for (var i = 0; i < dataValues.length; i++){
+        dataValues[i]['Times_clicked'] = JSON.parse(dataValues[i].mouseClicks).length;
+    }
+
+
+
+    
+ 
+    // console.log(loadTimes);
+    // console.log(sessionIDs);
+    // console.log(screenHs);
+    // console.log(screenWs);
+    // console.log(activity_data);
+     
+  </script>
+
+
+</head>
+
+<body>
+  
+
+  <!-- <h1>Welcome to <%= sessionIDs %></h1>
+  <div>hi</div> -->
+
+  <script>
+
+    var RepTime = [];
+
+
+    let Screen = [0,0,0];
+
+    for (let i = 0; i < SW.length; i++) {
+      if(SW[i] == '1512' && SH[i] == '982'){
+        Screen[0] += 1;
+      }
+      if(SW[i] == '1920' && SH[i] == '1080'){
+        Screen[1] += 1;
+      }
+      if(SW[i] == '1470' && SH[i] == '956'){
+        Screen[2] += 1;
+      }
+    } 
+
+    
+
+    console.log(Screen);
+
+  </script>
+
+
+  <div id="myChart" class="chart--container">
+    <a class="zc-ref" href="https://www.zingchart.com">Powered by ZingChart</a>
+  </div>
+  <div id="myPie" class= "chart--container"></div>
+  <zing-grid editor>
+  </zing-grid>
+
+  <script>
+  //id refers to the chart displayed by <div>
+  //series and values is where you insert the data
+    window.addEventListener('load', () => {
+      document.querySelector('zing-grid').data = dataValues;
+        zingchart.render({
+            id: 'myChart',
+            //data: "https://axelsagundo.com/api/performance",
+            height: '100%',
+            width: '100%',
+            data: {
+              type: 'bar',
+              title: {
+                text: "Load Times For Webpages in milliseconds"
+              },
+              'scale-x': {
+                labels: myLabels
+              },
+              series: [{
+                values: RepTime
+              },
+              {
+                values: Load
+              },]
+            }
+        }); 
+    });
+    zingchart.render({
+            id: 'myPie',
+            //data: "https://axelsagundo.com/api/performance",
+            height: '100%',
+            width: '100%',
+            data: {
+              type: 'pie',
+              "legend": {
+              },
+              title: {
+                text: "Screen Dimensions Of User (WxH in pixels)"
+              },
+              series: [{
+                values: [Screen[0]],
+                text: "1512x982"
+              },
+              {
+                values: [Screen[1]],
+                text: "1920x1080"
+              },
+              {
+                values: [Screen[2]],
+                text: "1536x864"
+              }
+            ]
+            }
+        }); 
+
+</script>
+
+ 
+  <button id="logoutButton" type="button">Log Out</button>
+
+  <script type="text/javascript">
+    
+    document.getElementById("logoutButton").onclick = function () {
+      location.href = "/logout.html";
+    }
+        
+  </script>
+
+  <button type="button" onclick="window.location='login_server/metricname.php';">Generate Report</button>
+
+  <br><br><br><br><br><br><br><br>
+
+
+</body>
+</html>

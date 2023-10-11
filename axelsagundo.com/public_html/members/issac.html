@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Issac Page</title>
+  <link rel="icon" type="image/x-icon" href="images/coffee.ico">
+  <style>
+    body{background-color: darkgrey;}
+
+    .classes {
+      background-color: white;
+    }
+
+    .dropbtn {
+      background-color: blue;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      background-color: beige;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #ddd;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+</head>
+
+<body>
+  <h1>Issac Page </h1>
+  <h2>Spring 2023</h2>
+  <div class="classes">
+    <h3>Classes</h3>
+    <ul>
+      <li>MGT 16</li>
+      <li>CSE 135</li>
+      <li>LISP 1D</li>
+      <li>LISP 1DX</li>
+    </ul>
+  </div>
+
+  <div class="classes">
+    <h3>Fun Facts</h3>
+    <ul>
+      <li>I play some videogames. At the moment just overwatch 2</li>
+      <li>I like to make coffee and espresso drinks</li>
+      <li>I love to cook. Mainly mexican and asian cuisines. </li>
+    </ul>
+  </div>
+
+  <h3>If you want to know more about coffee, you can ask me or just look at these links!</h3>
+  <div class="dropdown">
+    <button class="dropbtn">Types of Coffee</button>
+    <div class="dropdown-content">
+      <a href="https://www.littlecoffeeplace.com/how-to-drink-black-coffee">Black</a>
+      <a href="https://www.acouplecooks.com/how-to-make-a-latte/">Latte</a>
+      <a href="https://www.acouplecooks.com/how-to-make-an-americano/">Americano</a>
+      <a href="https://www.tasteofhome.com/article/how-to-make-an-affogato/">Affogato</a>
+      <a href="https://www.acouplecooks.com/how-to-make-cappuccino/">Cappuccino</a>
+      <a href="https://bakingmischief.com/homemade-mocha/">Mocha</a>
+    </div>
+  </div>
+
+  <h3>Pets</h3>
+  <img src="images/Gato.JPG" alt="Gato" width="500" height="600">
+  <p>She is an indoor cat, but she loves to climb trees. I don't know how or why.</p>
+
+  <script>
+    document.write(`Live @ ${new Date()}`);
+    function Add(){
+      var n1 = document.getElementById("num1");
+      var n2 = document.getElementById("num2");
+      var r = document.getElementById("result");
+      if (!isNaN(n1.value) && !isNaN(n2.value)){
+        r.value = Number(n1.value) + Number(n2.value);
+      }
+      else{
+        r.value = 'only numbers';
+      }
+    }
+  </script>
+
+  <h3>Here is an addition calc for some JS .-.</h3>
+  <p>Type 1st number</p>
+  <input id='num1' type="text" required>
+  <p>Type 2nd number</p>
+  <input id='num2' type="text" required>
+  <button onclick="Add()">Add</button> 
+  <input id="result" type="text">  
+
+</body>
+
+</html>
